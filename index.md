@@ -1,5 +1,8 @@
 # PyMOL-RS — Molecular Visualization and Vibe Coding
 
+Original article: https://vas3k.club/project/31005/
+
+
 > English translation of the Russian interview/article from VAS3K Club project #31005.
 
 ## Tell us about yourself and the project
@@ -245,3 +248,21 @@ And finally:
 > Don’t eat suspicious Peking duck.
 >
 > Then again, without that duck there might never have been PyMOL-RS.
+
+
+## Images from the original article
+
+![PyMOL-RS — molecular visualization and vibe coding](images/img-01.jpg)
+
+![PyMOL-RS](images/img-02.jpg)
+
+![A 305k-atom structure whose surface in PyMOL requires ~95 billion operations](images/img-03.jpg)
+
+![Standard shading](images/img-04.jpg)
+
+![Stas-style shading](images/img-05.jpg)
+
+![Beautiful secondary structures](images/img-06.jpg)
+
+![Debug-phase monsters](images/img-07.jpg)
+
