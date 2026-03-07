@@ -7,6 +7,8 @@ Original article: https://vas3k.club/project/31005/
 
 ## Tell us about yourself and the project
 
+
+![PyMOL-RS — molecular visualization and vibe coding](images/img-01.jpg)
 My name is Pavel Yakovlev. I’m a computational biologist from Saint Petersburg, working in pharma.
 
 For people far from molecular biology, here’s some context. Proteins, DNA, and drug molecules are all 3D objects. To work with them, you need to see them: rotate them, color chains, display surfaces, and inspect how a ligand sits in a receptor pocket. That’s what molecular viewers are for, and **PyMOL** is the undisputed king among them.
@@ -20,6 +22,8 @@ DeLano died by suicide in 2009 (which, sadly, led to a lot of dark humor in stru
 **PyMOL-RS** is a full rewrite of PyMOL from scratch in Rust. Same command language, same workflows familiar to thousands of scientists, but with a modern core: WebGPU instead of early-2000s OpenGL 2.x, memory safety instead of manual C memory management, and a modular crate-based architecture instead of a 25-year monolith.
 
 And yes, it has new features too.
+
+![PyMOL-RS](images/img-02.jpg)
 
 This project was built almost entirely with Claude Code and became my first large-scale vibe-coding experience: over 65,000 lines of code. So this is not just a “look at my cool project” post. It’s mostly about using Claude Code in a genuinely large and algorithmically complex project—and how not to repeat Warren’s fate while doing molecular visualization.
 
@@ -111,6 +115,8 @@ For large planning and structured prompt drafting, I used Gemini.
 
 A striking case: molecular surface generation. Claude noticed original PyMOL’s approach was suboptimal. I found papers with newer methods, shared them, and together we implemented a solution around **1000x faster** than original PyMOL in measured cases. Then we parallelized with Rayon, and full-protein surfaces went from “grab coffee” to “blink and done.”
 
+![A 305k-atom structure whose surface in PyMOL requires ~95 billion operations](images/img-03.jpg)
+
 Another case: Kabsch and CE structural alignment algorithms (SVD, optimal rotation, dynamic programming). Claude produced working Rust implementations of both on first attempt.
 
 Then came visual quality. A colleague (Stas), famous for clear molecular visuals, preferred ChimeraX aesthetics over PyMOL. I inspected internals and found fundamentally different lighting models, not just setting differences. So PyMOL-RS now includes two lighting models:
@@ -119,6 +125,10 @@ Then came visual quality. A colleague (Stas), famous for clear molecular visuals
 - `skripkin` (inspired by ChimeraX and Stas Skripkin’s preferences)
 
 Switchable with one setting.
+
+![Standard shading](images/img-04.jpg)
+
+![Stas-style shading](images/img-05.jpg)
 
 A big win was fast feedback: colleagues posted pain points in chat and got fixes the same evening. When “I want this” to “done” is hours instead of months, everything changes.
 
@@ -138,6 +148,8 @@ This is a niche product for structural biologists. But in this niche, a new mole
 
 For ~1.5 weeks I struggled with cartoon rendering of protein secondary structures (alpha helices, beta sheets, loops).
 
+![Beautiful secondary structures](images/img-06.jpg)
+
 This is less algorithmic and more geometric/visual:
 
 - proper polygon generation
@@ -146,6 +158,8 @@ This is less algorithmic and more geometric/visual:
 - tapering at beta-sheet arrow ends
 
 You can’t fully describe these transitions in words. Claude kept generating compilable code, but visuals looked terrible.
+
+![Debug-phase monsters](images/img-07.jpg)
 
 What worked: I drew geometry by hand on paper, annotated transitions and normals, photographed sketches, and then described them in text. Only then did we achieve proper output.
 
@@ -248,21 +262,3 @@ And finally:
 > Don’t eat suspicious Peking duck.
 >
 > Then again, without that duck there might never have been PyMOL-RS.
-
-
-## Images from the original article
-
-![PyMOL-RS — molecular visualization and vibe coding](images/img-01.jpg)
-
-![PyMOL-RS](images/img-02.jpg)
-
-![A 305k-atom structure whose surface in PyMOL requires ~95 billion operations](images/img-03.jpg)
-
-![Standard shading](images/img-04.jpg)
-
-![Stas-style shading](images/img-05.jpg)
-
-![Beautiful secondary structures](images/img-06.jpg)
-
-![Debug-phase monsters](images/img-07.jpg)
-
