@@ -1,6 +1,6 @@
 # PyMOL-RS — Molecular Visualization and Vibe Coding
 
-Original article: https://vas3k.club/project/31005/
+Original article: [https://vas3k.club/project/31005/](https://vas3k.club/project/31005/)
 
 
 > English translation of the Russian interview/article from VAS3K Club project #31005.
